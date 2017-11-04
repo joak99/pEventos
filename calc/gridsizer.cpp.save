@@ -1,7 +1,5 @@
 #include "gridsizer.h"
 #include <iostream>
-#include <string>
-#include <stdlib.h>
 using namespace std;
 
 GridSizer::GridSizer(const wxString& title)
@@ -89,10 +87,8 @@ void GridSizer::onBt0 (wxCommandEvent& WXUNUSED (event)) {
 
 void GridSizer::onBtSum (wxCommandEvent& WXUNUSED (event)) {
 	
-	string texto= (string)display -> GetValue();
-	valor1= atoi(texto.c_str()); 
-	cout << valor1 + valor1 << endl;
-	cout << valor1 << endl;
+	string 
+	cout << "Resultado suma " << total << endl;
 }
 
 
