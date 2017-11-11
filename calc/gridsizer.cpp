@@ -4,6 +4,8 @@
 #include <stdlib.h>
 using namespace std;
 
+
+
 GridSizer::GridSizer(const wxString& title)
        : wxFrame(NULL, -1, title, wxPoint(-1, -1), wxSize(270, 220))
 {
@@ -44,6 +46,7 @@ GridSizer::GridSizer(const wxString& title)
 }
 
 void GridSizer::onCls (wxCommandEvent& WXUNUSED (event)) {
+  display -> Clear();
 }
 
 
@@ -91,9 +94,84 @@ void GridSizer::onBtSum (wxCommandEvent& WXUNUSED (event)) {
 	
 	string texto= (string)display -> GetValue();
 	valor1= atoi(texto.c_str()); 
-	cout << valor1 + valor1 << endl;
-	cout << valor1 << endl;
+  display -> Clear();
+  
+  operacion= "+"; 
+  
 }
+
+void GridSizer::onBtRes (wxCommandEvent& WXUNUSED (event)) {
+	
+	string texto= (string)display -> GetValue();
+	valor1= atoi(texto.c_str()); 
+  display -> Clear();
+  
+  operacion= "-"; 
+}
+
+void GridSizer::onBtMul (wxCommandEvent& WXUNUSED (event)) {
+	
+	string texto= (string)display -> GetValue();
+	valor1= atoi(texto.c_str()); 
+  display -> Clear();
+  
+  operacion= "*"; 
+}
+void GridSizer::onBtDiv (wxCommandEvent& WXUNUSED (event)) {
+	
+	string texto= (string)display -> GetValue();
+	valor1= atoi(texto.c_str()); 
+  display -> Clear();
+  
+  operacion= "/"; 
+}
+
+void GridSizer::onBtEqu (wxCommandEvent& WXUNUSED (event)){
+  int total;
+  if(operacion == "+"){
+    string texto2=(string)display -> GetValue();
+	  valor2= atoi(texto2.c_str());
+	  total= valor1 + valor2;
+    cout << total<< endl;
+    
+    
+    char buff[10];
+    sprintf(buff,"%d",total);
+    string s(buff);
+    }
+   
+   if(operacion == "-"){
+    string texto2=(string)display -> GetValue();
+	  valor2= atoi(texto2.c_str());
+	  total= valor1 - valor2;
+    cout << total<< endl;
+    
+    char buff[10];
+    sprintf(buff,"%d",total);
+    string s(buff);
+    }
+   if(operacion == "*"){
+    string texto2=(string)display -> GetValue();
+	  valor2= atoi(texto2.c_str());
+	  total= valor1 * valor2;
+    cout << total<< endl;
+    
+    char buff[10];
+    sprintf(buff,"%d",total);
+    string s(buff);
+    }
+   if(operacion == "/"){
+    string texto2=(string)display -> GetValue();
+	  valor2= atoi(texto2.c_str());
+	  total= valor1 / valor2;
+    cout << total<< endl;
+    
+    char buff[10];
+    sprintf(buff,"%d",total);
+    string s(buff);
+    }
+  
+} 
 
 
 BEGIN_EVENT_TABLE(GridSizer, wxFrame)
@@ -110,4 +188,8 @@ BEGIN_EVENT_TABLE(GridSizer, wxFrame)
     EVT_BUTTON(1998,  GridSizer::onBt0)
    
     EVT_BUTTON(1995,  GridSizer::onBtSum)
+    EVT_BUTTON(1999, GridSizer::onBtRes)
+    EVT_BUTTON(1003, GridSizer::onBtMul)
+    EVT_BUTTON(1996, GridSizer::onBtEqu)
+    EVT_BUTTON(1007, GridSizer::onBtDiv)
 END_EVENT_TABLE()
